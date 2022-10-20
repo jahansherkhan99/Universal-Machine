@@ -1,0 +1,62 @@
+----------------------------------------------------------------------
+|                   COMP 40 hw06 - Universal Machine                 |
+| Archit Jain (ajain08)                                              |
+| Jahansher Khan (jkhan03)                                           |
+| Nov 23 2021                                                        |
+----------------------------------------------------------------------
+
+Help Received:
+Miles and Mary-Joy helped us solve a multitude of our bugs
+
+Architecture:
+    Our architecture first begins with UM.c which isa liaison point, directing
+    to different parts of the program. The first step is to read in codewords
+    into a UArray which is done in readfile.c. At this point, execute_op is 
+    called and executed; this forms the crux of the program.
+    Our architecture is fundamentally designed on our execute_op file,
+    which essentially utilizes a for loop with the program counter to 
+    execute a program from start to finish, and uses a series of if-else 
+    statements to direct our program to different functions. In turn, 
+    functions that deal with memory utilize seg_mem.c, which has direct 
+    access to the struct definition of memory. The only time the program 
+    does not finish is when loadprogram is called, whioch essentially replaces
+    the current program being run in segment 0. 
+    Our architecture has mainly stayed the same as our design, however
+    we now utilize a sequence of UArray's for the purposes of efficiency.
+
+Testing
+We have provided several unit tests which helped us write the code 
+incrementally
+
+The files are:
+halt.um - tests halt command
+halt-verbose.um - tests halt-verbose command 
+multiply.um - tests multiply and load value command, it prints the value 2
+when ran 
+add.um - tests the addition of two integers
+print-one.um - prints an integer number 1 and also tests the add command 
+input-output.um - takes an input and prints it out
+
+We ran the bash script testing.sh with bash testing.sh to test all files 
+and diff it against the reference program 
+
+We also tested it on the programs provided to us by the CS department and 
+then checked it with kcachegrind to see how memory is distributed and ran. 
+
+Time execution for 50 million instructions:
+
+Midmark has approximately 80 million instructions 
+It takes 4.34 seconds for our midmark to run which we found with 
+/usr/bin/time ./um midmark.um
+Hence, it will take 
+
+2.7 seconds
+
+Time spent analyzing the problems:
+5 hrs
+
+Time spent preparing your design:
+10 hrs
+
+Time spent solving the problems:
+35 hrs
